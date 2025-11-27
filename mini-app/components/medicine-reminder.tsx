@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
+import { TrashIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
@@ -77,8 +78,8 @@ export default function MedicineReminder() {
   };
 
   return (
-    <div className="w-full max-w-md space-y-6">
-      <h2 className="text-xl font-semibold">Create a Medicine Reminder</h2>
+    <div className="w-full max-w-md space-y-6 bg-background p-6 rounded-lg shadow">
+      <h2 className="text-2xl font-bold text-primary">Create a Medicine Reminder</h2>
       <div className="space-y-4">
         <div>
           <Label htmlFor="medicine">Medicine</Label>
@@ -131,7 +132,7 @@ export default function MedicineReminder() {
             </div>
           </div>
         )}
-        <Button onClick={handleSave}>Save</Button>
+        <Button variant="primary" onClick={handleSave}>Save</Button>
       </div>
 
       <div className="space-y-4">
@@ -141,7 +142,20 @@ export default function MedicineReminder() {
         ) : (
           <ul className="space-y-2">
             {reminders.map((rem) => (
-              <li key={rem.id} className="border p-3 rounded">
+              <li key={rem.id} className="border border-primary p-3 rounded bg-muted">
+                <div className="flex justify-between items-start">
+                  <p>
+                    <strong>{rem.medicine}</strong> at <strong>{rem.time}</strong> ({rem.frequency === "once"
+                      ? "Once daily"
+                      : rem.frequency === "twice"
+                      ? "Twice daily"
+                      : `Specific: ${rem.days?.join(", ")}`})
+                  </p>
+                  <Button variant="destructive" size="icon" onClick={() => deleteReminder(rem.id)} aria-label="Delete reminder">
+                    <TrashIcon className="size-4" />
+                  </Button>
+                </div>
+              </li>
                 <p>
                   <strong>{rem.medicine}</strong> at <strong>{rem.time}</strong>{" "}
                   ({rem.frequency === "once"
