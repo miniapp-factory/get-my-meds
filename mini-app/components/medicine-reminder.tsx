@@ -159,15 +159,6 @@ export default function MedicineReminder() {
                   </Button>
                 </div>
               </li>
-                <p>
-                  <strong>{rem.medicine}</strong> at <strong>{rem.time}</strong>{" "}
-                  ({rem.frequency === "once"
-                    ? "Once daily"
-                    : rem.frequency === "twice"
-                    ? "Twice daily"
-                    : `Specific: ${rem.days?.join(", ")}`})
-                </p>
-              </li>
             ))}
           </ul>
         )}
