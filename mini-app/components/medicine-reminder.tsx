@@ -135,7 +135,7 @@ export default function MedicineReminder() {
             </div>
           </div>
         )}
-        <Button variant="primary" onClick={handleSave}>Save</Button>
+        <Button variant="default" onClick={handleSave}>Save</Button>
       </div>
 
       <div className="space-y-4">
