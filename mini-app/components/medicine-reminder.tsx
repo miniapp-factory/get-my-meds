@@ -76,6 +76,9 @@ export default function MedicineReminder() {
       prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]
     );
   };
+  const deleteReminder = (id: string) => {
+    setReminders((prev) => prev.filter((rem) => rem.id !== id));
+  };
 
   return (
     <div className="w-full max-w-md space-y-6 bg-background p-6 rounded-lg shadow">
